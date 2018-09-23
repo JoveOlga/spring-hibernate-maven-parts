@@ -4,7 +4,6 @@ import com.olgaruban.dao.PatrDao;
 import com.olgaruban.model.Part;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,25 +13,20 @@ public class PartServiceImpl implements PartService {
     @Autowired
     PatrDao patrDao;
 
-    @Transactional
     public void savePart(Part part) {
         patrDao.savePart(part);
     }
 
-    @Transactional
     public void deletePart(long id) {
         patrDao.deletePart(id);
     }
 
-    @Transactional
     public Part getPart(long id) {
         return patrDao.getPart(id);
     }
 
-    @Transactional
     public List<Part> getList(int page, int pageSize , String filter) {
-        List<Part> parts = patrDao.getList(page, pageSize, filter);
-        return parts;
+        return patrDao.getList(page, pageSize, filter);
     }
 
     public List<Part> getListByName(int page, int pageSize, String needle) {
